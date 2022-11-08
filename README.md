@@ -1,11 +1,9 @@
-# Setup
-
 ## Getting Started
 
 ### Clone the repository:
 
 ```sh
-git clone https://Eirini_mos@bitbucket.org/Eirini_mos/ppm_tool.git
+git clone https://github.com/EviDimitropoulou/TestUI.git
 ```
 
 
@@ -62,6 +60,3 @@ npm run  cypress:execution in order to run headless
 1. Run the npm run cypress:execution-allure
 2. Execute npm run allure:report from the command line or directly for package.json the   "allure:report"
 
-##  Sample repo to generate an allure report as an artifact using GH Actions
-
-* https://github.com/SeyiOG/newCyLearn2/blob/main/.github/workflows/cypress-allure-report.yml

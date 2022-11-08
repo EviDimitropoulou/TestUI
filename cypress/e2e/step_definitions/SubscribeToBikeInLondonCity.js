@@ -20,7 +20,7 @@ const detailsPage = new PersonalDetailsLocators();
 
 
 Given("A web browser is at the Swapfiets page", () => {
-  cy.visit("https://swapfiets.co.uk/")
+  cy.visit("https://swapfiets.com/en-GB");
 });
 
 When("user search for city {string}", (city) => {
