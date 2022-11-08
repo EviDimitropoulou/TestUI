@@ -30,12 +30,13 @@ class SearchLocator {
     typeChooseCitytxtBox(city){
         this.elements.getChooseCitytxtBox().type(city);
         cy.wait(1000);
+        cy.pause();
     }
     checkSeeBikesbtn(text){
         this.elements.getSeeBikesBtn().should('contain',text);
     }
     clickSeeBikesBtn(){
-        this.elements.getSeeBikesBtn().click();
+        this.elements.getSeeBikesBtn().click({force:true});
     }
     checkchangeBtn(){
         this.elements.getChangeBtn()

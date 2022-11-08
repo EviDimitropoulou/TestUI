@@ -38,31 +38,38 @@ class SubscriptionLocators  {
         .and('have.value', 'flexible');
        
       }
-
-      checkMontlyFieldHasValue(cost){
+      clickOnYesButton(button){
         this.elements.getLoyalMembershipBtn()
         .should('be.checked');
         cy.wait(1000);
-        this.elements.getYesBikeUsageBtn().check({force:true});
+        this.elements.getYesBikeUsageBtn()
+        .check({force:true});
      
-        this.elements.getMonthlyTxbBox()
-        .should('contain',cost);
-        this.elements.getOnOffTxbBox()
-        .should('contain','£0.00');
       }
 
-      checkOnOffHasValue(cost){
+      checkMontlyFieldHasValue(cost){
+       
+        this.elements.getMonthlyTxbBox()
+        .should('contain',cost);
+        
+      }
+
+      clickOnflex(){
         this.elements.getFlexMembershipBtn().check({force:true});
        
         cy.wait(1000);
         this.elements.getYesBikeUsageBtn().check({force:true});
-     
-        this.elements.getOnOffTxbBox()
-        .should('contain',cost);
       }
+
+      checkOnOffHasValue(cost){  
+       this.elements.getOnOffTxbBox()
+      .should('contain',cost);}
+     
+      
 
       clickOnOrderBikeBtn(){
         this.elements.getOrderBikeBtn().click({force:true});
+        cy.wait(1000);
     
       }
 
