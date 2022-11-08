@@ -19,6 +19,9 @@ const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 // }
 
 module.exports = defineConfig({
+  blockHosts: "*.google-analytics.com",
+  viewportWidth: 1279,
+  viewportHeight: 800,
   e2e: {
     async setupNodeEvents(on, config) {
       const bundler = createBundler({
@@ -31,7 +34,8 @@ module.exports = defineConfig({
          return config;
     },
     specPattern: "cypress/e2e/features/*.feature",
-    baseUrl: "https://swapfiets.co.uk/",
+    
     chromeWebSecurity: false,
+    modifyObstructiveCode:false
   },
 });
