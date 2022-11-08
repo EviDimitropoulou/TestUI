@@ -1,41 +1,66 @@
-# cypress-cucumber-boilerplate-for-e2e-testing
+# Setup
 
-<img src="https://media-exp1.licdn.com/dms/image/C4E0BAQF1dg2KtKFdPg/company-logo_200_200/0/1626295436859?e=2159024400&v=beta&t=Ib_T9PXXQxkHRKnj3Oe65EKuR6EAh01IgAA6IGvU0FY" alt="exemplo imagem">
+## Getting Started
 
-> Cypress 10+ with Cucumber boilerplate project.
+### Clone the repository:
 
-### 💻 Topics
+```sh
+git clone https://Eirini_mos@bitbucket.org/Eirini_mos/ppm_tool.git
+```
 
-Integrated with:
-
-- [x] https://github.com/badeball/cypress-cucumber-preprocessor
-- [x] https://github.com/bahmutov/cypress-esbuild-preprocessor
-- [x] https://www.npmjs.com/package/multiple-cucumber-html-reporter
-- [x] https://github.com/cucumber/json-formatter
-- [x] https://github.com/Shelex/cypress-allure-plugin
-
-(+ bundlers: https://github.com/badeball/cypress-cucumber-preprocessor/tree/master/examples)
 
 - ## 💻 Pre-requisites
 
 1. Node JS
 2. Optional: Java 8 for Allure Reporter
-3. Optional: Json-formatter for Native Reporter option(depends on your OS: https://github.com/cucumber/json-formatter)
 
 ## 🚀 Install the project
 
-Install project dependencies with: npm i
+1. Make sure you already have npm installed. If not, use this command to install npm:
 
-## Run the demo:
+```sh
+npm install
+```
 
-1. Standard Execution: npm run cypress:execution
-2. Native report(with JSON FORMATTER): Check how to do it in this video: [Cucumber BDD Report - YouTube](https://www.youtube.com/watch?v=5AGXK9cL2fs&t=2s&ab_channel=JoanMedia)
-3. Allure Report: 
-   1. npm run cypress:execution-allure
-   2. npm run allure:report
-   3. allure open
-   4. You'll get a report like this one: GitHub Page - Allure Report Sample: https://joanesquivel.github.io/cypress-cucumber-boilerplate/
+2. Make sure you already have cypress installed. If not, use this command to install cypress:
 
+```sh
+npm install cypress --save-dev
+```
+
+3. Make sure you have _cypress-cucumber-preprocessor_ plugin. If not, use this command to install it:
+
+```sh
+npm install  @badeball/cypress-cucumber-preprocessor
+```
+
+4. Make sure you have es build plugin. If not, use this command to install it:
+
+ ```sh
+npm i -D cypress @bahmutov/cypress-esbuild-preprocessor esbuild
+```
+
+5. For fetting the reports make sure you have allure plugin. If not, use this command to install it:
+
+ ```sh
+npm i -D @shelex/cypress-allure-plugin
+```
+6. Also highly recommended to use these plugins in your IDE:
+
+- Cucumber (Gherkin) Full Support
+- Gherkin Beautifier
+- Snippets and Syntax Highlight for Gherkin (Cucumber)
+- Prettier - Code formatter
+
+## How to run the tests
+
+1. Execute at the command line npm run cypress:runner in order to open the IDE of Cypress OR execute
+npm run  cypress:execution in order to run headless
+2. As an alternative go to package.json and run the script "cypress:open" or "cypress:run"
+
+## How to run and get the test reports 
+1. Run the npm run cypress:execution-allure
+2. Execute npm run allure:report from the command line or directly for package.json the   "allure:report"
 
 ##  Sample repo to generate an allure report as an artifact using GH Actions
 

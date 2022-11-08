@@ -57,7 +57,7 @@ class SubscriptionLocators {
   clickOnflex() {
     this.elements.getFlexMembershipBtn().check({ force: true });
 
-    cy.wait(1000);
+    cy.wait(500);
     this.elements.getYesBikeUsageBtn().check({ force: true });
   }
 

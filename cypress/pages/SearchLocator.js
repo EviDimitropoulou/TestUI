@@ -54,7 +54,7 @@ class SearchLocator {
     }
 
     checkMoreDetailsLink(name) {
-        cy.wait(5000)
+        cy.wait(500)
         this.elements.getMoreDetailsLink()
             .should('be.visible')
             .should('contain', name)

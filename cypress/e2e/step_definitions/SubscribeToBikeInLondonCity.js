@@ -4,7 +4,7 @@ import {
   Then,
   And,
 } from "@badeball/cypress-cucumber-preprocessor";
-const loginPage = require("../../pages/LoginPage");
+
 const search = require("../../pages/SearchLocator");
 const Subscription = require("../../pages/SubscriptionLocators");
 const PersonalDetails = require("../../pages/PersonalDetailsLocators");
@@ -20,7 +20,7 @@ const detailsPage = new PersonalDetailsLocators();
 
 
 Given("A web browser is at the Swapfiets page", () => {
-  cy.visit("https://swapfiets.com/en-GB");
+  cy.visit("https://swapfiets.co.uk/")
 });
 
 When("user search for city {string}", (city) => {
