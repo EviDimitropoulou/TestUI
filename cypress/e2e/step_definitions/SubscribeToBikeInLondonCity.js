@@ -17,9 +17,12 @@ const searchPage = new SearchLocator();
 const subscriptionPage = new SubscriptionLocators();
 const detailsPage = new PersonalDetailsLocators();
 
+beforeEach(function(){
+cy.viewport(1600, 903)
+});
 
 
-Given("A web browser is at the Swapfiets page", () => {
+Given("user enters at Swapfiets page", () => {
   cy.visit("https://swapfiets.com/en-GB");
 });
 
@@ -45,8 +48,10 @@ Then("the more details link exists", () => {
   cy.wait(500);
 });
 
-Then("the four products are displayed with product names {string}", (name) => {
-  cy.get("[data-test-id=city-product-list-item]").should("have.length", 4);
+Then("there are four products", () => {
+  searchPage.checkNumberOfBikes();
+});
+Then("the names of the bikes {string} are displayed", (name) => {
   searchPage.checkBikes(name);
   cy.wait(200);
 });
@@ -60,9 +65,14 @@ Then("the side menu is functional", () => {
   cy.wait(200);
 });
 
-When("user selects to subscribe to Power1 bike", () => {
+Given("user selects Power1 bike", () => {
   subscriptionPage.clickOnSubscriptionBtn();
 });
+
+Then("the url is {string}", (url) => {
+ cy.location('pathname').should('eq',url)
+});
+
 Then("the loyal membership is preselected", () => {
   //assert that Loyal membership is preselected
   subscriptionPage.checkLoyalMembershipBtn();
@@ -70,6 +80,10 @@ Then("the loyal membership is preselected", () => {
 Then("the flexible membership is not selected", () => {
   //assert that Loyal membership is preselected
   subscriptionPage.checkFlexMembershipBtn();
+});
+
+Given("user is at the subscription page", () => {
+  cy.location('pathname').should('eq','/london/power-1/configure')
 });
 
 When("user selectes {string} button", (button) => {
@@ -93,10 +107,16 @@ Then("the On off costs are {string}", (cost) => {
 When("user click on Order button", () => {
   subscriptionPage.clickOnOrderBikeBtn();;
   cy.wait(100);
+ // cy.fixture("fixtures/subscriber.json").then(form=>{
+   // this.forms=forms;
+  //})
 });
 
 Then("the Required message is displayed", () => {
   subscriptionPage.checkRequiredMessage();
+});
+
+Given("user is at registration page", () => {
 });
 
 Then("the form is displayed", () => {
@@ -107,30 +127,30 @@ Then("the Country field is not editable", () => {
   detailsPage.checkCountryBtn();
 });
 
-Then("user fill in the data", () => {
-  //type firstName
-  detailsPage.TypeFirstName("Evi");
-  detailsPage.TypePrefix("fi");
-  detailsPage.TypeLastName("Dom");
+Then("user fill in {string},{string},{string},{string},{string},{string},{string},{string},{string},{string},{string},,{string},{string}", (firstName,prefix,lastName,year,height,street,houseNum,addition,postal,city,email,phone,comments) => {
+  //type the form
+  detailsPage.TypeFirstName(firstName);
+  detailsPage.TypePrefix(prefix);
+  detailsPage.TypeLastName(lastName);
   detailsPage.selectDay();
   detailsPage.selectMonth();
-  detailsPage.selectYear("1993");
+  detailsPage.selectYear(year);
   detailsPage.CheckGender();
-  detailsPage.enterHeight("160");
+  detailsPage.enterHeight(height);
   // detailsPage.OnHoverMsg();
-  detailsPage.enterStreet("Filaretou");
-  detailsPage.enterHouseNumber("17");
-  detailsPage.enterAddition("addition");
-  detailsPage.enterPostalCode("BD1 2RD");
-  detailsPage.enterCityField("London");
+  detailsPage.enterStreet(street);
+  detailsPage.enterHouseNumber(houseNum);
+  detailsPage.enterAddition(addition);
+  detailsPage.enterPostalCode(postal);
+  detailsPage.enterCityField(city);
 
   //assert that Country fiels is not editable
   detailsPage.checkCountryBtn();
 
-  detailsPage.enterEmailAddress("evi.dimitropoulou@gmail.com");
+  detailsPage.enterEmailAddress(email);
   detailsPage.selectTelephoneCode();
-  detailsPage.enterPhone("6984278733");
-  detailsPage.enterComments("Lorem ipsum dolor sit amet, consectetur adipiscing elit");
+  detailsPage.enterPhone(phone);
+  detailsPage.enterComments(comments);
   detailsPage.clickOnTermsAndConditions();
   detailsPage.clickOnGDPR();
 });
@@ -138,7 +158,6 @@ Then("user fill in the data", () => {
 
 When("user selects year {string}", (year) => {
   detailsPage.selectYear(year)
-
 });
 Then("an information message is displayed", () => {
   detailsPage.checkUnder18Message();
@@ -157,9 +176,7 @@ When("user leave empty the fields {string}", (field) => {
     detailsPage.clearLastNameField();
     detailsPage.clickOnNextButton();
   }
-
 });
-
 
 When("click on Next button", () => { });
 
@@ -183,8 +200,6 @@ When("user enters invalid values to the fields {string}", (field) => {
     detailsPage.enterInvalidEmail();
     detailsPage.clickOnNextButton();
   }
-
-
 });
 
 Then("the corresponding {string} is displayed", (message) => {
@@ -199,5 +214,13 @@ Then("the corresponding {string} is displayed", (message) => {
 When("user click on button", () => {
   detailsPage.clickOnBackButton();
 
-
 });
+
+Then("the United Kingdom remains as selected country", () => {
+  searchPage.checkCountryisUK();
+});
+
+Then("the language button displays {string}", (language) => {
+  searchPage.checkCountryisUK(language);
+});
+

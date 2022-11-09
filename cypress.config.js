@@ -36,7 +36,8 @@ module.exports = defineConfig({
          return config;
     },
     specPattern: "cypress/e2e/features/*.feature",
-    chromeWebSecurity: false,
-    modifyObstructiveCode:false
+    chromeWebSecurity:false,
+    modifyObstructiveCode:false,
+    experimentalSessionAndOrigin:false
   },
 });

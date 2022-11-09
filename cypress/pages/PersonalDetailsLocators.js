@@ -33,32 +33,41 @@ class PersonalDetailsLocators {
 
 
     TypeFirstName(firstName) {
-        this.elements.getFirstNameTxtFiels().type(firstName);
+        this.elements.getFirstNameTxtFiels()
+        .type(firstName);
     }
     TypePrefix(prefix) {
-        this.elements.getPrefixTxtFields().type(prefix);
+        this.elements.getPrefixTxtFields()
+        .type(prefix);
     }
     TypeLastName(lastName) {
-        this.elements.getLastNameTxtFiels().type(lastName);
+        this.elements.getLastNameTxtFiels()
+        .type(lastName);
     }
     CheckGender() {
-        this.elements.getGenderFemaleFields().check({ force: true });
+        this.elements.getGenderFemaleFields()
+        .check({ force: true });
     }
     enterHeight(height) {
-        this.elements.getHeighTxtFields().type(height);
+        this.elements.getHeighTxtFields()
+        .type(height);
     }
 
     enterStreet(street) {
-        this.elements.getStreerTxtFields().type(street);
+        this.elements.getStreerTxtFields()
+        .type(street);
     }
     enterHouseNumber(HouseNumber) {
-        this.elements.getHouseNumberTxtFields().type(HouseNumber);
+        this.elements.getHouseNumberTxtFields()
+        .type(HouseNumber);
     }
     enterAddition(addition) {
-        this.elements.getAdditionTxtFields().type(addition);
+        this.elements.getAdditionTxtFields()
+        .type(addition);
     }
     enterPostalCode(postalCode) {
-        this.elements.getPostalCodeTxtFields().type(postalCode);
+        this.elements.getPostalCodeTxtFields()
+        .type(postalCode);
     }
     selectDay() {
         cy.get('select[name="Day"]')
@@ -77,11 +86,13 @@ class PersonalDetailsLocators {
     }
 
     enterCityField(city) {
-        this.elements.getCityFields().type(city);
+        this.elements.getCityFields()
+        .type(city);
     }
 
     enterEmailAddress(email) {
-        this.elements.getEmailAddressFields().type(email);
+        this.elements.getEmailAddressFields()
+        .type(email);
     }
     selectTelephoneCode() {
         cy.get('select[name="telephonePrefix"]')
@@ -90,10 +101,12 @@ class PersonalDetailsLocators {
     }
 
     enterPhone(phone) {
-        this.elements.getTelephoneFields().type(phone);
+        this.elements.getTelephoneFields()
+        .type(phone);
     }
     enterComments(comments) {
-        this.elements.getCommentsFields().type(comments);
+        this.elements.getCommentsFields()
+        .type(comments);
     }
 
     checkCountryBtn() {
@@ -104,18 +117,22 @@ class PersonalDetailsLocators {
     }
 
     clickOnTermsAndConditions() {
-        this.elements.getTermsCheckBox().check({ force: true });
+        this.elements.getTermsCheckBox()
+        .check({ force: true });
     }
 
     clickOnGDPR() {
-        this.elements.getGDPRCheckBox().check({ force: true });
+        this.elements.getGDPRCheckBox()
+        .check({ force: true });
     }
 
     clearNameField() {
-        this.elements.getFirstNameTxtFiels().clear({ force: true });
+        this.elements.getFirstNameTxtFiels()
+        .clear({ force: true });
     }
     clearLastNameField() {
-        this.elements.getLastNameTxtFiels().clear();
+        this.elements.getLastNameTxtFiels()
+        .clear();
     }
     clickOnNextButton() {
         this.elements.getNextButton().click({ force: true });
@@ -176,10 +193,9 @@ class PersonalDetailsLocators {
             .should('be.disabled');
     }
     clickOnBackButton() {
-        //   cy.wait(5000)
-        //  cy.go(-1);
         this.elements.getBackButton().click({ force: true });
-        cy.visit("https://swapfiets.co.uk/")
+        cy.visit("https://swapfiets.co.uk/");
+        cy.scrollTo('bottom');
 
 
     }

@@ -1,0 +1,15 @@
+{
+    "Firstname": "Using fixtures to represent data",
+    "prefix": "hello@cypress.io",
+    "LastName": "Dimitropoulou",
+    "Height": "123",
+    "StreetName": "Filaretou",
+    "HouseNumber": "12",
+    "Addition": "as",
+    "PostCode": "LS9 8UL",
+    "Contact": "evi.dimitropoulou@gmail.com",
+    "Phone": "69813244",
+    "Comments": "dadadad",
+    "City": "London"
+
+}
