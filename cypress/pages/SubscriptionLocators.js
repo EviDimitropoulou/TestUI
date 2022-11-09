@@ -55,7 +55,6 @@ class SubscriptionLocators {
   clickOnOrderBikeBtn() {
     this.elements.getOrderBikeBtn().should('exist')
       .click({ force: true });
-    // cy.request('https://account.swapfiets.com/registration/enroll')
   }
   formIsDisplayed() {
     this.elements.getForm().should('exist');
