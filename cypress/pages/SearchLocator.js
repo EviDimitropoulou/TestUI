@@ -15,7 +15,8 @@ class SearchLocator {
         getCountry: () => cy.get('[data-test-id="countryButton"]'),
         getLanguage: () => cy.get('[data-test-id="languageButton"]'),
         getAllBikes: () => cy.get('.ProductList_list__E25Va li'),
-        getCountryTxt: () => cy.get('.Dropdown_container__zjHrJ'),
+        getCountryTxt: () => cy.get('.Dropdown_container__zjHrJ')
+    
     }
 
     visitSwapfietsUKpage() {
@@ -63,6 +64,7 @@ class SearchLocator {
         this.elements.getAllBikes().should("have.length", 4);
     }
     checkBikes(name) {
+    
         if (name === 'Original') {
             cy.contains("[data-test-id=city-product-list-item]", name);
         } else if (name === 'Deluxe 7') {
@@ -84,15 +86,15 @@ class SearchLocator {
         this.elements.getCloseSideMenu()
             .click({ force: true });
     }
-    checkCountryisUK(){
+    checkCountryisUK(country) {
         this.elements.getCountryTxt()
-        .should('have.id','Select country')
-        //.and('have.deep.nested.property')
+            .invoke('attr', 'data-value')
+            .should('contain', country);
     }
 
-    checkLanguage(language){
+    checkLanguage(language) {
         this.elements.getLanguage()
-        .should('contain',language);
+            .should('contain', language);
     }
 
 }

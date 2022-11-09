@@ -20,7 +20,6 @@ Feature: Login to Swapfiets
 
         Scenario: User subscibes to Power1 without select bike usage
             Given user selects Power1 bike
-          #When user selects to subscribe to Power1 bike
              Then the url is "/london/power-1/configure"
               And the loyal membership is preselected
               And the flexible membership is not selected
@@ -69,19 +68,19 @@ Feature: Login to Swapfiets
              Then the corresponding "<message>" is displayed
 
         Examples:
-                  | field      | message                 |
-                  | first name | This field is incorrect |
-               #     | last name   | This field is incorrect |
+                  | field       | message                 |
+                  | first name  | This field is incorrect |
+                  | last name   | This field is incorrect |
                   | email       | This field is incorrect |
                   | postal code | This field is incorrect |
 
         Scenario Outline: User click on Back button
             Given user is at registration page
              When user click on button
-             Then the United Kingdom remains as selected country
+             Then the "<country>" remains as selected country
               And the language button displays "<language>"
         Examples:
 
-                  | language |
-                  | English  |
+                  | country |  | language |
+                  | GB      |  | English  |
 

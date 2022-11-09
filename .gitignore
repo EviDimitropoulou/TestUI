@@ -20,7 +20,7 @@ dist/
 allure-report/
 allure-results/
 videos/
-
+screenshots/
 # Compiled Static libraries
 *.lai
 *.la

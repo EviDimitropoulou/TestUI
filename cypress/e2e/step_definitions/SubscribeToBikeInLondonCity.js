@@ -38,20 +38,24 @@ Then("user is redirected to the page with the available bikes", () => {
 });
 
 Then("the button All, E-bikes, city bikes exist", () => {
+  //check that the radio buttons for the type of the bikes exists
   searchPage.checkAllRadioBtn();
   searchPage.checkEbikeRadioBtn();
   searchPage.checkCitybikeRadioBtn();
 });
 
 Then("the more details link exists", () => {
+  //check that the more details link exists
   searchPage.checkMoreDetailsLink("More details");
   cy.wait(500);
 });
 
 Then("there are four products", () => {
+  //check number of bikes
   searchPage.checkNumberOfBikes();
 });
 Then("the names of the bikes {string} are displayed", (name) => {
+  //checkthe names of the products
   searchPage.checkBikes(name);
   cy.wait(200);
 });
@@ -83,6 +87,7 @@ Then("the flexible membership is not selected", () => {
 });
 
 Given("user is at the subscription page", () => {
+  //assert the url
   cy.location('pathname').should('eq','/london/power-1/configure')
 });
 
@@ -91,7 +96,7 @@ When("user selectes {string} button", (button) => {
 });
 
 Then("the montly costs are {string}", (cost) => {
-  //assert that Loyal membership is preselected
+  //assert the monthly costs 
   subscriptionPage.checkMontlyFieldHasValue(cost);
 });
 
@@ -100,7 +105,7 @@ When("user selects flex membership", () => {
 });
 
 Then("the On off costs are {string}", (cost) => {
-  //assert that Loyal membership is preselected
+  //assert On off costs
   subscriptionPage.checkOnOffHasValue(cost);
 });
 
@@ -113,6 +118,7 @@ When("user click on Order button", () => {
 });
 
 Then("the Required message is displayed", () => {
+  //assert that the Required is displayed when user does not select bike usage
   subscriptionPage.checkRequiredMessage();
 });
 
@@ -120,6 +126,7 @@ Given("user is at registration page", () => {
 });
 
 Then("the form is displayed", () => {
+  //assert that the form is displayed
   subscriptionPage.formIsDisplayed();
 });
 Then("the Country field is not editable", () => {
@@ -137,7 +144,6 @@ Then("user fill in {string},{string},{string},{string},{string},{string},{string
   detailsPage.selectYear(year);
   detailsPage.CheckGender();
   detailsPage.enterHeight(height);
-  // detailsPage.OnHoverMsg();
   detailsPage.enterStreet(street);
   detailsPage.enterHouseNumber(houseNum);
   detailsPage.enterAddition(addition);
@@ -160,14 +166,17 @@ When("user selects year {string}", (year) => {
   detailsPage.selectYear(year)
 });
 Then("an information message is displayed", () => {
+  //check that the message for under 18 years old is displayed
   detailsPage.checkUnder18Message();
 });
 
 Then("user cannot proceed to the next step", () => {
+  //check that Next button is disable
   detailsPage.NextBtnIsDisabled();
 });
 
 When("user leave empty the fields {string}", (field) => {
+  //clear fields and enter empty values
   if (field === 'first name') {
     detailsPage.clearNameField();
     detailsPage.clickOnNextButton();
@@ -182,6 +191,7 @@ When("click on Next button", () => { });
 
 When("user enters invalid values to the fields {string}", (field) => {
   if (field === 'first name') {
+    //clear fields and enter invalid values 
     detailsPage.clearNameField();
     detailsPage.enterInvalidFirstName()
     detailsPage.clickOnNextButton();
@@ -203,7 +213,7 @@ When("user enters invalid values to the fields {string}", (field) => {
 });
 
 Then("the corresponding {string} is displayed", (message) => {
-
+// check tha the correct error messages are displayed 
   if (message === 'This field is required')
     detailsPage.checkRequiredErrorMessage(message);
   else if (message === 'This field is incorrect')
@@ -216,11 +226,13 @@ When("user click on button", () => {
 
 });
 
-Then("the United Kingdom remains as selected country", () => {
-  searchPage.checkCountryisUK();
+Then("the {string} remains as selected country", (country) => {
+  //check that the selected country is UK
+  searchPage.checkCountryisUK(country);
 });
 
 Then("the language button displays {string}", (language) => {
-  searchPage.checkCountryisUK(language);
+  //check that the selected language is English
+  searchPage.checkLanguage(language);
 });
 
